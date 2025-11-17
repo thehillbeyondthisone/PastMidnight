@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Midnight - After Dark Screensavers</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/control-panel.css">
+</head>
+<body>
+    <!-- Screensaver Container -->
+    <div id="screensaver-container" class="screensaver-hidden">
+        <canvas id="screensaver-canvas"></canvas>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <header class="header">
+            <h1>🌙 Past Midnight</h1>
+            <p class="tagline">For when it's already dark.</p>
+        </header>
+
+        <main class="main">
+            <section class="intro">
+                <p>
+                    A nostalgic recreation of the legendary <strong>After Dark</strong> screensavers
+                    from Berkeley Systems (1989-1997). Experience the magic of flying toasters,
+                    starry nights, and mesmerizing patterns that defined a generation of computing.
+                </p>
+            </section>
+
+            <section class="controls">
+                <button id="open-control-panel" class="btn btn-primary">
+                    ⚙️ Open Control Panel
+                </button>
+                <button id="preview-screensaver" class="btn btn-secondary">
+                    👁️ Preview Now
+                </button>
+            </section>
+
+            <section class="screensaver-gallery">
+                <h2>Available Screensavers</h2>
+                <div id="screensaver-grid" class="screensaver-grid">
+                    <!-- Dynamically populated -->
+                </div>
+            </section>
+
+            <section class="info">
+                <h2>Features</h2>
+                <ul>
+                    <li>🎨 Nostalgically accurate recreations of classic After Dark screensavers</li>
+                    <li>🔌 Expandable plugin architecture - easily add your own screensavers</li>
+                    <li>⚙️ Vintage control panel interface</li>
+                    <li>⌨️ Keyboard and mouse activation</li>
+                    <li>🎲 Random screensaver mode</li>
+                    <li>⏱️ Configurable idle timeout</li>
+                    <li>📱 Responsive and modern performance</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>
+                Tribute to After Dark™ by Berkeley Systems. Original screensavers © Berkeley Systems 1989-1997.
+                <br>
+                This is a fan recreation for educational and nostalgic purposes.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Control Panel Modal -->
+    <div id="control-panel-modal" class="modal-overlay hidden">
+        <div class="control-panel-window">
+            <div class="window-titlebar">
+                <span class="window-title">After Dark Control Panel</span>
+                <button class="window-close" id="close-control-panel">×</button>
+            </div>
+            <div class="window-content">
+                <div class="control-section">
+                    <label for="screensaver-select">Screensaver:</label>
+                    <select id="screensaver-select" class="control-select">
+                        <!-- Dynamically populated -->
+                    </select>
+                </div>
+
+                <div class="control-section">
+                    <label for="idle-timeout">Activate after:</label>
+                    <input type="number" id="idle-timeout" min="1" max="60" value="3" class="control-input">
+                    <span>minutes</span>
+                </div>
+
+                <div class="control-section">
+                    <label>
+                        <input type="checkbox" id="random-mode" class="control-checkbox">
+                        Random screensaver mode
+                    </label>
+                </div>
+
+                <div class="control-section">
+                    <label>
+                        <input type="checkbox" id="enable-screensaver" class="control-checkbox" checked>
+                        Enable screensaver
+                    </label>
+                </div>
+
+                <div class="preview-container">
+                    <div id="mini-preview" class="mini-preview">
+                        <span class="preview-label">Preview</span>
+                    </div>
+                </div>
+
+                <div class="control-actions">
+                    <button id="test-screensaver" class="btn btn-primary">Test</button>
+                    <button id="save-settings" class="btn btn-secondary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Engine -->
+    <script type="module" src="src/core/ScreensaverEngine.js"></script>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
