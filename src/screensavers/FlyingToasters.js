@@ -16,10 +16,57 @@ export class FlyingToasters extends BaseScreensaver {
         };
     }
 
+    static get defaultSettings() {
+        return {
+            speed: 'normal',           // slow, normal, fast
+            density: 'normal',         // low, normal, high
+            toastRatio: 'normal',      // mostly-toasters, normal, mostly-toast
+            wingFlapSpeed: 'normal'    // slow, normal, fast
+        };
+    }
+
     init() {
         this.objects = [];
         this.spawnTimer = 0;
-        this.spawnInterval = 2000; // Spawn every 2 seconds
+
+        // Apply settings
+        const settings = { ...this.constructor.defaultSettings, ...this.config };
+
+        // Spawn interval based on density
+        if (settings.density === 'low') {
+            this.spawnInterval = 3500;
+        } else if (settings.density === 'high') {
+            this.spawnInterval = 1000;
+        } else {
+            this.spawnInterval = 2000;
+        }
+
+        // Toast ratio
+        if (settings.toastRatio === 'mostly-toasters') {
+            this.toastProbability = 0.15;
+        } else if (settings.toastRatio === 'mostly-toast') {
+            this.toastProbability = 0.6;
+        } else {
+            this.toastProbability = 0.3;
+        }
+
+        // Speed multiplier
+        if (settings.speed === 'slow') {
+            this.speedMultiplier = 0.5;
+        } else if (settings.speed === 'fast') {
+            this.speedMultiplier = 2;
+        } else {
+            this.speedMultiplier = 1;
+        }
+
+        // Wing flap speed
+        if (settings.wingFlapSpeed === 'slow') {
+            this.wingFlapMultiplier = 0.5;
+        } else if (settings.wingFlapSpeed === 'fast') {
+            this.wingFlapMultiplier = 2;
+        } else {
+            this.wingFlapMultiplier = 1;
+        }
 
         // Create initial objects
         for (let i = 0; i < 5; i++) {
@@ -28,7 +75,7 @@ export class FlyingToasters extends BaseScreensaver {
     }
 
     spawnObject(delay = 0) {
-        const isToaster = Math.random() > 0.3; // 70% toasters, 30% toast
+        const isToaster = Math.random() > this.toastProbability;
         const size = isToaster ? this.random(60, 100) : this.random(30, 50);
 
         this.objects.push({
@@ -36,9 +83,9 @@ export class FlyingToasters extends BaseScreensaver {
             x: this.width + 100,
             y: this.random(50, this.height - 50),
             size: size,
-            speed: this.random(0.5, 1.5),
+            speed: this.random(0.5, 1.5) * this.speedMultiplier,
             wingAngle: 0,
-            wingSpeed: this.random(0.05, 0.1),
+            wingSpeed: this.random(0.05, 0.1) * this.wingFlapMultiplier,
             rotation: 0,
             rotationSpeed: isToaster ? 0 : this.random(-0.02, 0.02),
             spawnDelay: delay,

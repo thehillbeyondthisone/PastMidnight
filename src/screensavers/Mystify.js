@@ -16,13 +16,48 @@ export class Mystify extends BaseScreensaver {
         };
     }
 
+    static get defaultSettings() {
+        return {
+            polygonCount: 'normal', // single, normal, many
+            trailLength: 'normal',   // short, normal, long
+            speed: 'normal'          // slow, normal, fast
+        };
+    }
+
     init() {
         this.polygons = [];
-        this.trailLength = 20;
-        this.fadeAmount = 0.1;
+
+        // Apply settings
+        const settings = { ...this.constructor.defaultSettings, ...this.config };
+
+        // Trail length
+        if (settings.trailLength === 'short') {
+            this.trailLength = 10;
+            this.fadeAmount = 0.15;
+        } else if (settings.trailLength === 'long') {
+            this.trailLength = 40;
+            this.fadeAmount = 0.05;
+        } else {
+            this.trailLength = 20;
+            this.fadeAmount = 0.1;
+        }
+
+        // Speed multiplier
+        if (settings.speed === 'slow') {
+            this.speedMultiplier = 0.5;
+        } else if (settings.speed === 'fast') {
+            this.speedMultiplier = 2;
+        } else {
+            this.speedMultiplier = 1;
+        }
+
+        // Polygon count
+        let count = 2;
+        if (settings.polygonCount === 'single') count = 1;
+        if (settings.polygonCount === 'many') count = 4;
 
         // Create polygons
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < count; i++) {
             this.polygons.push(this.createPolygon());
         }
     }
@@ -37,8 +72,8 @@ export class Mystify extends BaseScreensaver {
             points.push({
                 x: this.random(0, this.width),
                 y: this.random(0, this.height),
-                vx: this.random(-2, 2),
-                vy: this.random(-2, 2),
+                vx: this.random(-2, 2) * this.speedMultiplier,
+                vy: this.random(-2, 2) * this.speedMultiplier,
                 history: []
             });
         }

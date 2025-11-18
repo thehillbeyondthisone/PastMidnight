@@ -16,12 +16,40 @@ export class Warp extends BaseScreensaver {
         };
     }
 
+    static get defaultSettings() {
+        return {
+            speed: 'normal',      // slow, normal, fast, ludicrous
+            starDensity: 'normal' // low, normal, high
+        };
+    }
+
     init() {
         this.stars = [];
         this.centerX = this.width / 2;
         this.centerY = this.height / 2;
-        this.starCount = 200;
-        this.speed = 5;
+
+        // Apply settings
+        const settings = { ...this.constructor.defaultSettings, ...this.config };
+
+        // Star density
+        if (settings.starDensity === 'low') {
+            this.starCount = 100;
+        } else if (settings.starDensity === 'high') {
+            this.starCount = 400;
+        } else {
+            this.starCount = 200;
+        }
+
+        // Speed
+        if (settings.speed === 'slow') {
+            this.speed = 2;
+        } else if (settings.speed === 'fast') {
+            this.speed = 10;
+        } else if (settings.speed === 'ludicrous') {
+            this.speed = 20;
+        } else {
+            this.speed = 5;
+        }
 
         // Create stars
         for (let i = 0; i < this.starCount; i++) {

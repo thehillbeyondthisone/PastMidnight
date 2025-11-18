@@ -68,50 +68,67 @@
         </footer>
     </div>
 
-    <!-- Control Panel Modal -->
+    <!-- Authentic After Dark Control Panel -->
     <div id="control-panel-modal" class="modal-overlay hidden">
         <div class="control-panel-window">
             <div class="window-titlebar">
-                <span class="window-title">After Dark Control Panel</span>
+                <span class="window-title">After Dark</span>
                 <button class="window-close" id="close-control-panel">×</button>
             </div>
             <div class="window-content">
-                <div class="control-section">
-                    <label for="screensaver-select">Screensaver:</label>
-                    <select id="screensaver-select" class="control-select">
-                        <!-- Dynamically populated -->
-                    </select>
-                </div>
-
-                <div class="control-section">
-                    <label for="idle-timeout">Activate after:</label>
-                    <input type="number" id="idle-timeout" min="1" max="60" value="3" class="control-input">
-                    <span>minutes</span>
-                </div>
-
-                <div class="control-section">
-                    <label>
-                        <input type="checkbox" id="random-mode" class="control-checkbox">
-                        Random screensaver mode
+                <!-- General Settings -->
+                <div class="general-settings">
+                    <label class="win95-checkbox-label">
+                        <input type="checkbox" id="enable-screensaver" class="win95-checkbox" checked>
+                        Enable screen saver
+                    </label>
+                    <div class="setting-row">
+                        <span class="setting-label">Wait:</span>
+                        <input type="number" id="idle-timeout" min="1" max="60" value="3" class="win95-input" style="width: 50px;">
+                        <span>minutes</span>
+                    </div>
+                    <label class="win95-checkbox-label">
+                        <input type="checkbox" id="random-mode" class="win95-checkbox">
+                        Random module
                     </label>
                 </div>
 
-                <div class="control-section">
-                    <label>
-                        <input type="checkbox" id="enable-screensaver" class="control-checkbox" checked>
-                        Enable screensaver
-                    </label>
-                </div>
+                <!-- Left: Preview and Module List -->
+                <div class="preview-section">
+                    <div class="group-box">
+                        <span class="group-box-title">Preview</span>
+                        <div class="preview-monitor">
+                            <div id="monitor-screen" class="monitor-screen">
+                                <canvas id="preview-canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="preview-container">
-                    <div id="mini-preview" class="mini-preview">
-                        <span class="preview-label">Preview</span>
+                    <div class="group-box">
+                        <span class="group-box-title">Screen Saver Modules</span>
+                        <div class="module-list-container">
+                            <ul id="module-list" class="module-list">
+                                <!-- Dynamically populated -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="control-actions">
-                    <button id="test-screensaver" class="btn btn-primary">Test</button>
-                    <button id="save-settings" class="btn btn-secondary">OK</button>
+                <!-- Right: Module Settings -->
+                <div class="settings-section">
+                    <div class="group-box">
+                        <span class="group-box-title">Module Settings</span>
+                        <div id="module-settings" class="module-settings">
+                            <!-- Dynamically populated based on selected module -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom: Buttons -->
+                <div class="button-row">
+                    <button id="test-screensaver" class="win95-button">Test</button>
+                    <button id="save-settings" class="win95-button default">OK</button>
+                    <button id="cancel-settings" class="win95-button">Cancel</button>
                 </div>
             </div>
         </div>
