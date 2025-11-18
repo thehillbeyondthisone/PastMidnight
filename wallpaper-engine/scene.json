@@ -1,0 +1,132 @@
+{
+  "general": {
+    "ambientcolor": "0.05 0.05 0.1",
+    "clearcolor": "0.02 0.01 0.05",
+    "orthogonalprojection": 1,
+    "orthogonalsize": 1080,
+    "bloomstrength": 0.3,
+    "bloomthreshold": 0.7,
+    "properties": {
+      "enablebluelight": {
+        "order": 100,
+        "text": "Enable Blue Light Filter",
+        "type": "bool",
+        "value": true
+      },
+      "bluelightintensity": {
+        "order": 101,
+        "text": "Blue Light Filter Intensity",
+        "type": "slider",
+        "min": 0,
+        "max": 100,
+        "value": 50,
+        "condition": "enablebluelight == true"
+      },
+      "timeofday": {
+        "order": 200,
+        "text": "Time of Day",
+        "type": "combo",
+        "options": [
+          {"label": "Auto (System Time)", "value": "auto"},
+          {"label": "Always Night", "value": "night"},
+          {"label": "Dusk", "value": "dusk"},
+          {"label": "Midnight", "value": "midnight"}
+        ],
+        "value": "auto"
+      },
+      "starcount": {
+        "order": 300,
+        "text": "Star Count",
+        "type": "slider",
+        "min": 0,
+        "max": 200,
+        "value": 100
+      },
+      "enablemoon": {
+        "order": 400,
+        "text": "Show Moon",
+        "type": "bool",
+        "value": true
+      },
+      "moonbrightness": {
+        "order": 401,
+        "text": "Moon Brightness",
+        "type": "slider",
+        "min": 0,
+        "max": 100,
+        "value": 70,
+        "condition": "enablemoon == true"
+      }
+    }
+  },
+  "camera": {
+    "center": "0 0 0",
+    "eye": "0 0 10",
+    "up": "0 1 0"
+  },
+  "objects": [
+    {
+      "name": "Background",
+      "type": "image",
+      "image": "images/background.png",
+      "origin": "0 0 0",
+      "scale": "1 1 1",
+      "angles": "0 0 0",
+      "visible": true,
+      "alpha": 1,
+      "colorBlendMode": 0,
+      "color": "1 1 1"
+    },
+    {
+      "name": "Stars Particle System",
+      "type": "particle",
+      "origin": "0 0 -5",
+      "scale": "1 1 1",
+      "angles": "0 0 0",
+      "config": "materials/stars.json",
+      "visible": true,
+      "script": "scripts/stars.js"
+    },
+    {
+      "name": "Moon",
+      "type": "image",
+      "image": "images/moon.png",
+      "origin": "600 400 -3",
+      "scale": "0.3 0.3 0.3",
+      "angles": "0 0 0",
+      "visible": true,
+      "alpha": 0.7,
+      "colorBlendMode": 1,
+      "color": "1 0.95 0.85",
+      "script": "scripts/moon.js"
+    },
+    {
+      "name": "Blue Light Overlay",
+      "type": "image",
+      "image": "images/overlay.png",
+      "origin": "0 0 8",
+      "scale": "1 1 1",
+      "angles": "0 0 0",
+      "visible": true,
+      "alpha": 0.3,
+      "colorBlendMode": 2,
+      "color": "1 0.7 0.3",
+      "script": "scripts/bluelight.js"
+    },
+    {
+      "name": "Time Display",
+      "type": "text",
+      "text": "12:00 AM",
+      "origin": "-900 -500 5",
+      "scale": "1 1 1",
+      "angles": "0 0 0",
+      "visible": true,
+      "alpha": 0.6,
+      "color": "0.8 0.8 1",
+      "size": 48,
+      "font": "Segoe UI",
+      "alignment": "left",
+      "script": "scripts/clock.js"
+    }
+  ]
+}

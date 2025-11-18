@@ -1,0 +1,36 @@
+{
+  "emitters": [
+    {
+      "name": "Stars",
+      "distancemax": 1000,
+      "distancemin": 500,
+      "directions": 1,
+      "velocitymax": 0,
+      "velocitymin": 0,
+      "lifetime": 0,
+      "rate": 100,
+      "startsize": 4,
+      "endsize": 4,
+      "startcolor": "1 1 1",
+      "endcolor": "0.9 0.95 1",
+      "startalpha": 0.8,
+      "endalpha": 0.8,
+      "spritesheet": "images/star.png",
+      "blendmode": "additive",
+      "angles": "0 0 0",
+      "origin": "0 0 0",
+      "box": "1920 1080 100",
+      "boxmindistance": 0,
+      "boxmaxdistance": 1,
+      "particleflags": {
+        "bloom": true,
+        "twinkle": true
+      },
+      "twinkle": {
+        "speed": 2,
+        "min": 0.3,
+        "max": 1.0
+      }
+    }
+  ]
+}
