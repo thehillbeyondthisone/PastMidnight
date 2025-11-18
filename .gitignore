@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+*.js.map
+*.d.ts
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.Python
+
+# IDE
+.vscode/*
+!.vscode/tasks.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Plugin specific
+defaults/settings.json
+backend/out/

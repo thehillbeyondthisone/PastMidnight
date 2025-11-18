@@ -1,0 +1,54 @@
+{
+  "name": "pastmidnight",
+  "version": "1.0.0",
+  "description": "For when it's already dark. Nighttime gaming enhancement for Steam Deck",
+  "scripts": {
+    "build": "shx rm -rf dist && rollup -c",
+    "watch": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thehillbeyondthisone/PastMidnight.git"
+  },
+  "keywords": [
+    "decky",
+    "plugin",
+    "steamdeck",
+    "nightmode",
+    "brightness"
+  ],
+  "author": "thehillbeyondthisone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thehillbeyondthisone/PastMidnight/issues"
+  },
+  "homepage": "https://github.com/thehillbeyondthisone/PastMidnight#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@types/webpack": "^5.28.5",
+    "rollup": "^4.9.6",
+    "rollup-plugin-import-assets": "^1.1.1",
+    "shx": "^0.3.4",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "decky-frontend-lib": "^3.25.2",
+    "react-icons": "^5.0.1"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "react",
+        "react-dom"
+      ]
+    }
+  }
+}

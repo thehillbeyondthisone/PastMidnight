@@ -1,0 +1,11 @@
+{
+  "name": "PastMidnight",
+  "author": "thehillbeyondthisone",
+  "flags": ["_root"],
+  "publish": {
+    "tags": ["utility", "nightmode", "brightness"],
+    "description": "For when it's already dark. Enhance your nighttime gaming experience with automatic brightness control and blue light filtering.",
+    "image": "https://via.placeholder.com/256x256.png"
+  },
+  "api_version": 1
+}
