@@ -1,0 +1,25 @@
+{
+  "name": "past-midnight",
+  "version": "1.0.0",
+  "description": "A nostalgic recreation of After Dark screensavers - for when it's already dark",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8080",
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "screensaver",
+    "after-dark",
+    "nostalgia",
+    "retro",
+    "berkeley-systems",
+    "flying-toasters"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thehillbeyondthisone/PastMidnight"
+  }
+}

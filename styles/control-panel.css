@@ -1,0 +1,442 @@
+/* Authentic After Dark Control Panel - Windows 95/Mac Classic Style */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(2px);
+}
+
+/* Main After Dark Window */
+.control-panel-window {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 650px;
+    font-family: 'MS Sans Serif', 'Chicago', Geneva, sans-serif;
+    color: #000;
+    font-size: 11px;
+}
+
+/* Window Titlebar - Classic Windows 95 Blue */
+.window-titlebar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 3px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 11px;
+    user-select: none;
+}
+
+.window-title {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-left: 2px;
+}
+
+.window-title::before {
+    content: '';
+    width: 16px;
+    height: 14px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect fill='%23ffcc00' x='2' y='8' width='6' height='6'/%3E%3Crect fill='%23ff6600' x='8' y='2' width='6' height='6'/%3E%3Crect fill='%2366ccff' x='2' y='2' width='6' height='6'/%3E%3Crect fill='%2300cc66' x='8' y='8' width='6' height='6'/%3E%3C/svg%3E");
+    background-size: contain;
+}
+
+.window-close {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    width: 16px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 0;
+    line-height: 1;
+    color: #000;
+}
+
+.window-close:active {
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.window-close:hover {
+    background: #dfdfdf;
+}
+
+/* Main Content Area */
+.window-content {
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+/* Left Panel - Preview and Module Selection */
+.preview-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.group-box {
+    border: 1px solid #808080;
+    border-top-color: #ffffff;
+    border-left-color: #ffffff;
+    padding: 12px 8px 8px 8px;
+    position: relative;
+    background: #c0c0c0;
+}
+
+.group-box-title {
+    position: absolute;
+    top: -6px;
+    left: 8px;
+    background: #c0c0c0;
+    padding: 0 4px;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+/* Preview Monitor */
+.preview-monitor {
+    background: #000;
+    border: 3px solid #808080;
+    border-top-color: #000000;
+    border-left-color: #000000;
+    border-bottom-color: #dfdfdf;
+    border-right-color: #dfdfdf;
+    padding: 15px;
+    position: relative;
+    aspect-ratio: 4/3;
+}
+
+.preview-monitor::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid #333;
+    pointer-events: none;
+}
+
+.monitor-screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.monitor-screen canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Module List */
+.module-list-container {
+    height: 150px;
+    border: 2px inset #808080;
+    background: #fff;
+    overflow-y: auto;
+}
+
+.module-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.module-list-item {
+    padding: 2px 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    user-select: none;
+}
+
+.module-list-item:hover {
+    background: #0000aa;
+    color: #fff;
+}
+
+.module-list-item.selected {
+    background: #000080;
+    color: #fff;
+}
+
+.module-icon {
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+}
+
+/* Right Panel - Settings */
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.setting-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 22px;
+}
+
+.setting-label {
+    font-weight: normal;
+    min-width: 100px;
+    font-size: 11px;
+}
+
+.setting-value {
+    flex: 1;
+}
+
+/* Windows 95 Style Controls */
+.win95-select,
+.win95-input {
+    background: white;
+    border: 2px inset #808080;
+    padding: 2px 4px;
+    font-family: 'MS Sans Serif', Geneva, sans-serif;
+    font-size: 11px;
+    width: 100%;
+}
+
+.win95-select {
+    height: 21px;
+}
+
+.win95-select:focus,
+.win95-input:focus {
+    outline: 1px dotted #000;
+    outline-offset: -3px;
+}
+
+/* Checkbox */
+.win95-checkbox {
+    width: 13px;
+    height: 13px;
+    margin: 0;
+    margin-right: 6px;
+    cursor: pointer;
+    appearance: none;
+    border: 2px inset #808080;
+    background: white;
+    position: relative;
+}
+
+.win95-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -3px;
+    left: 0px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+}
+
+.win95-checkbox-label {
+    cursor: pointer;
+    user-select: none;
+    font-size: 11px;
+}
+
+/* Module Settings Container */
+.module-settings {
+    min-height: 120px;
+    padding: 4px;
+}
+
+.module-settings-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #808080;
+}
+
+.no-settings {
+    color: #808080;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Button Row */
+.button-row {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    padding-top: 4px;
+    border-top: 1px solid #808080;
+    margin-top: 4px;
+}
+
+.win95-button {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    padding: 4px 12px;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000;
+    min-width: 75px;
+    cursor: pointer;
+    font-family: 'MS Sans Serif', Geneva, sans-serif;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+    user-select: none;
+}
+
+.win95-button:active {
+    border-top: 2px solid #000000;
+    border-left: 2px solid #000000;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #808080;
+    padding: 5px 11px 3px 13px;
+}
+
+.win95-button:focus {
+    outline: 1px dotted #000;
+    outline-offset: -4px;
+}
+
+.win95-button.default {
+    border: 3px solid #000;
+    font-weight: bold;
+}
+
+/* General Settings (top section) */
+.general-settings {
+    grid-column: 1 / -1;
+    padding: 6px;
+    background: #c0c0c0;
+    border: 1px solid #808080;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Scrollbar for module list */
+.module-list-container::-webkit-scrollbar {
+    width: 16px;
+}
+
+.module-list-container::-webkit-scrollbar-track {
+    background: #dfdfdf;
+    border-left: 1px solid #808080;
+}
+
+.module-list-container::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    box-shadow: inset 1px 1px 0 #dfdfdf;
+}
+
+.module-list-container::-webkit-scrollbar-button {
+    height: 16px;
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+}
+
+/* Status bar */
+.status-bar {
+    background: #c0c0c0;
+    border-top: 1px solid #808080;
+    padding: 2px 4px;
+    font-size: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.status-item {
+    border: 1px inset #808080;
+    padding: 1px 4px;
+    background: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .window-content {
+        grid-template-columns: 1fr;
+    }
+
+    .general-settings {
+        grid-column: 1;
+    }
+
+    .button-row {
+        grid-column: 1;
+    }
+}
+
+/* Animation */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-overlay:not(.hidden) .control-panel-window {
+    animation: modalFadeIn 0.15s ease-out;
+}
+
+/* Dropdown styling */
+.win95-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%23000'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+    padding-right: 20px;
+}
