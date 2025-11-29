@@ -15,12 +15,15 @@ import { Pipes } from './screensavers/Pipes.js';
 import { Matrix } from './screensavers/Matrix.js';
 import { BouncingLogo } from './screensavers/BouncingLogo.js';
 import { Aquarium } from './screensavers/Aquarium.js';
+import { Rain } from './screensavers/Rain.js';
+import { BadDog } from './screensavers/BadDog.js';
+import { MowingMan } from './screensavers/MowingMan.js';
 
 /**
  * Initialize the application
  */
 function init() {
-    console.log('🌙 Past Midnight - Initializing...');
+    console.log('Past Midnight - Initializing...');
 
     // Get canvas and container
     const canvas = document.getElementById('screensaver-canvas');
@@ -38,6 +41,9 @@ function init() {
     engine.register(Matrix);
     engine.register(BouncingLogo);
     engine.register(Aquarium);
+    engine.register(Rain);
+    engine.register(BadDog);
+    engine.register(MowingMan);
 
     // Initialize control panel
     const controlPanel = new ControlPanel();
@@ -50,8 +56,8 @@ function init() {
         engine.start();
     });
 
-    console.log('✨ Past Midnight - Ready!');
-    console.log(`📦 ${engine.getAll().length} screensavers loaded`);
+    console.log('Past Midnight - Ready!');
+    console.log(`${engine.getAll().length} screensavers loaded`);
 }
 
 /**

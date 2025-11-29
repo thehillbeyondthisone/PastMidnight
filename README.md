@@ -1,50 +1,73 @@
-# 🌙 Past Midnight
+# Past Midnight
 
 **For when it's already dark.**
 
-A full-featured, expandable, nostalgically accurate recreation of the legendary **After Dark** screensavers from Berkeley Systems (1989-1997). Experience the magic of flying toasters, starry nights, and mesmerizing patterns that defined a generation of computing.
+A full-featured recreation of the legendary After Dark screensavers from Berkeley Systems (1989-1997). Built with vanilla JavaScript and HTML5 Canvas, Past Midnight brings back the magic of flying toasters, starry nights, and mesmerizing patterns that defined a generation of computing.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-## ✨ Features
+## Features
 
-- 🎨 **Nostalgically Accurate** - Faithful recreations of classic After Dark screensavers
-- 🔌 **Expandable Architecture** - Plugin system makes it easy to add your own screensavers
-- ⚙️ **Vintage Control Panel** - Classic Mac/Windows 95-style settings interface
-- ⌨️ **Full Activation System** - Idle detection, keyboard/mouse activation
-- 🎲 **Random Mode** - Automatically cycle through different screensavers
-- ⏱️ **Configurable Timeout** - Set your own idle time
-- 📱 **Modern & Responsive** - Works on all screen sizes
-- 💾 **Persistent Settings** - Your preferences are saved locally
+- **Nostalgically Accurate** - Faithful recreations of classic After Dark screensavers
+- **Expandable Architecture** - Plugin system makes it easy to add your own screensavers
+- **Vintage Control Panel** - Classic Mac/Windows 95-style settings interface
+- **Full Activation System** - Idle detection, keyboard/mouse activation
+- **Random Mode** - Automatically cycle through different screensavers
+- **Configurable Timeout** - Set your own idle time
+- **Modern & Responsive** - Works on all screen sizes
+- **Persistent Settings** - Your preferences are saved locally
 
-## 🎮 Included Screensavers
+## Included Screensavers
 
-### 🍞 Flying Toasters
-The legendary screensaver featuring toasters with wings and flying toast. The most iconic After Dark screensaver that captured the imagination of millions.
+### Flying Toasters
+The legendary screensaver featuring toasters with wings and flying toast. The most iconic After Dark screensaver that captured the imagination of millions in the early 90s.
 
-### ⭐ Starry Night
-A peaceful field of twinkling stars with occasional shooting stars streaking across the night sky.
+**Configurable options:** Speed, density, toast ratio, wing flap speed
 
-### 💫 Mystify
+### Starry Night
+A peaceful field of twinkling stars with occasional shooting stars streaking across the night sky, complete with a city skyline.
+
+**Configurable options:** Star density, shooting star frequency, buildings toggle, star color
+
+### Mystify
 Mesmerizing bouncing polygons with colorful trails creating hypnotic geometric patterns.
 
-### 🌟 Warp!
+**Configurable options:** Polygon count, trail length, speed
+
+### Warp!
 Stars rushing past at warp speed, giving you the feeling of traveling through hyperspace.
 
-### 🔧 Pipes
+**Configurable options:** Speed (including ludicrous mode), star density
+
+### Pipes
 Classic 3D pipe construction with colorful segments building across your screen.
 
-### 💚 Matrix Code
+### Matrix Code
 Falling green characters inspired by The Matrix, featuring both ASCII and Katakana characters.
 
-### 📀 Bouncing Logo
-The legendary bouncing logo that changes color on impact. Includes a counter for the rare corner hits!
+### Bouncing Logo
+The DVD-style bouncing logo that changes color on impact. Includes a counter for the rare corner hits.
 
-### 🐠 Aquarium
-Peaceful fish swimming with bubbles in a serene underwater environment.
+### Aquarium
+Peaceful fish swimming with bubbles, swaying plants, and a sandy bottom in a serene underwater environment.
 
-## 🚀 Quick Start
+### Rain
+Gentle to heavy rainfall with realistic droplets and ripple effects when drops hit the ground. Optional lightning flashes add drama to the storm.
+
+**Configurable options:** Intensity, wind speed, lightning toggle, ripples toggle
+
+### Bad Dog
+The mischievous dog from After Dark returns to tear and scratch your screen, leaving pawprints and chaos in his wake.
+
+**Configurable options:** Dog speed, destruction level, pawprint toggle
+
+### Mowing Man
+Watch as a lawn mower systematically cuts your screen into neat grass strips, revealing freshly mowed lawn underneath.
+
+**Configurable options:** Mowing speed, pattern (horizontal/vertical/random), grass style
+
+## Quick Start
 
 ### Option 1: Open Directly
 Simply open `index.html` in your web browser.
@@ -54,32 +77,33 @@ Simply open `index.html` in your web browser.
 # Using Python 3
 python3 -m http.server 8080
 
-# Or using npm
-npm start
+# Or using Node.js
+npx http-server
 
 # Then open http://localhost:8080
 ```
 
-## 🎯 Usage
+## Usage
 
 ### Basic Usage
-1. Open the page
-2. Click **"Preview Now"** to see the screensaver immediately
+1. Open the page in your browser
+2. Click "Preview Now" to see the screensaver immediately
 3. Click any screensaver card to preview that specific one
 4. Move your mouse or press any key to exit
 
 ### Configuration
-1. Click **"Open Control Panel"** to access settings
+1. Click "Open Control Panel" to access settings
 2. Select your favorite screensaver or enable Random Mode
 3. Set the idle timeout (how long before activation)
-4. Click **"Test"** to preview or **"OK"** to save
-5. The screensaver will automatically activate after the idle period
+4. Adjust individual screensaver settings
+5. Click "Test" to preview or "OK" to save
+6. The screensaver will automatically activate after the idle period
 
 ### Keyboard Shortcuts
 - Any key: Exit screensaver
 - Mouse movement: Exit screensaver
 
-## 🔧 Architecture
+## Architecture
 
 Past Midnight uses a clean, modular plugin architecture that makes it easy to add new screensavers.
 
@@ -98,7 +122,10 @@ PastMidnight/
 │   │   ├── Pipes.js
 │   │   ├── Matrix.js
 │   │   ├── BouncingLogo.js
-│   │   └── Aquarium.js
+│   │   ├── Aquarium.js
+│   │   ├── Rain.js
+│   │   ├── BadDog.js
+│   │   └── MowingMan.js
 │   ├── ui/
 │   │   └── ControlPanel.js         # Settings UI
 │   └── main.js             # App initialization
@@ -107,9 +134,9 @@ PastMidnight/
     └── control-panel.css   # Control panel styles
 ```
 
-## 🛠️ Creating Your Own Screensaver
+## Creating Your Own Screensaver
 
-Adding a new screensaver is simple! Just extend the `BaseScreensaver` class:
+Adding a new screensaver is straightforward. Extend the `BaseScreensaver` class:
 
 ```javascript
 import { BaseScreensaver } from '../core/BaseScreensaver.js';
@@ -127,9 +154,19 @@ export class MyScreensaver extends BaseScreensaver {
         };
     }
 
+    // Optional: Define configurable settings
+    static get defaultSettings() {
+        return {
+            speed: 'normal',      // slow, normal, fast
+            color: 'blue',        // red, blue, green
+            enabled: true
+        };
+    }
+
     // Initialize your screensaver
     init() {
         // Set up initial state
+        const settings = { ...this.constructor.defaultSettings, ...this.config };
         this.myValue = 0;
     }
 
@@ -173,24 +210,24 @@ The `BaseScreensaver` class provides many useful utilities:
 - `fillBackground(color)` - Fill with solid color
 
 **Utility Methods:**
-- `random(min, max)` - Random float
-- `randomInt(min, max)` - Random integer
+- `random(min, max)` - Random float between min and max
+- `randomInt(min, max)` - Random integer between min and max
 - `randomColor()` - Random HSL color
-- `getElapsedTime(timestamp)` - Time since start
+- `getElapsedTime(timestamp)` - Time since screensaver start
 
 **Lifecycle Methods:**
-- `init()` - Called once at start
-- `draw(timestamp)` - Called every frame
-- `cleanup()` - Called when stopping
+- `init()` - Called once when screensaver starts
+- `draw(timestamp)` - Called every frame (60fps)
+- `cleanup()` - Called when screensaver stops
 
-## 🎨 Screensaver Engine
+## Screensaver Engine
 
 The `ScreensaverEngine` manages all screensavers and provides:
 
 - **Plugin System** - Register and manage screensavers
 - **Idle Detection** - Automatically activate after inactivity
-- **Settings Management** - Save/load user preferences
-- **Event System** - Subscribe to screensaver events
+- **Settings Management** - Save/load user preferences via localStorage
+- **Event System** - Subscribe to screensaver lifecycle events
 
 ```javascript
 import { engine } from './core/ScreensaverEngine.js';
@@ -208,14 +245,14 @@ engine.on('screensaver:started', (data) => {
 });
 ```
 
-## 🎭 Customization
+## Customization
 
 ### Adjust Idle Timeout
 Change the default timeout in the control panel or programmatically:
 
 ```javascript
 engine.updateSettings({
-    idleTimeout: 5 * 60 * 1000  // 5 minutes
+    idleTimeout: 5 * 60 * 1000  // 5 minutes in milliseconds
 });
 ```
 
@@ -226,57 +263,57 @@ engine.updateSettings({
 });
 ```
 
-### Change Screensaver Colors
-Edit the screensaver source files to customize colors, speeds, and behaviors.
+### Customize Screensaver Behavior
+Edit the screensaver source files to customize colors, speeds, and behaviors. Each screensaver exposes configurable settings through the `defaultSettings` static getter.
 
-## 📜 History
+## History
 
-After Dark was a series of screensavers released by Berkeley Systems from 1989 to 1997. Flying Toasters, released in 1989, became a cultural phenomenon and one of the most recognizable computer graphics of the early 1990s.
+After Dark was a series of screensavers released by Berkeley Systems from 1989 to 1997. The original purpose was practical: prevent CRT monitor burn-in. But After Dark transcended utility to become a cultural phenomenon.
 
-Past Midnight is a tribute to these classic screensavers, recreated with modern web technologies while maintaining the nostalgic charm of the originals.
+Flying Toasters, released in 1989, became one of the most recognizable computer graphics of the early 1990s. The surreal image of winged toasters and flying toast captured the playful spirit of early personal computing. Other modules like Starry Night, Bad Dog, and Mowing Man became beloved classics.
 
-## 🙏 Credits
+Past Midnight is a tribute to these screensavers, recreated with modern web technologies while maintaining the nostalgic charm and personality of the originals.
+
+## Credits
 
 - **Original After Dark** - Berkeley Systems (1989-1997)
 - **Inspiration** - [after-dark-css](https://github.com/bryanbraun/after-dark-css) by Bryan Braun
 - **Past Midnight** - Modern recreation with expandable architecture
 
-## 📄 License
+## License
 
-MIT License - See LICENSE file for details
+MIT License - See LICENSE file for details.
 
-**Note:** After Dark™ is a trademark of Berkeley Systems. This project is a fan recreation for educational and nostalgic purposes. Original screensaver concepts © Berkeley Systems 1989-1997.
+**Note:** After Dark is a trademark of Berkeley Systems. This project is a fan recreation for educational and nostalgic purposes. Original screensaver concepts are copyright Berkeley Systems 1989-1997.
 
-## 🤝 Contributing
+## Contributing
 
-Want to add more screensavers? Found a bug? Contributions are welcome!
+Want to add more screensavers? Found a bug? Contributions are welcome.
 
 1. Fork the repository
 2. Create your feature branch
-3. Add your screensaver following the examples
-4. Test thoroughly
+3. Add your screensaver following the existing patterns
+4. Test thoroughly across different screen sizes
 5. Submit a pull request
 
-## 🐛 Known Issues
+## Known Issues
 
-- None currently! But if you find any, please report them.
+None currently. If you find any issues, please report them on GitHub.
 
-## 🔮 Future Ideas
+## Future Possibilities
 
-- [ ] More classic screensavers (Mowing Man, Solitaire, etc.)
-- [ ] Sound effects (with mute option)
-- [ ] Multi-monitor support
-- [ ] Performance optimizations
-- [ ] Export as Electron app for desktop
-- [ ] Mobile touch support
-- [ ] Screensaver marketplace/sharing
+- Additional classic screensavers (Daredevil Dan, Boris the Cat, etc.)
+- Sound effects with mute option
+- Multi-monitor support
+- Performance optimizations (OffscreenCanvas, WebGL)
+- Desktop application via Electron
+- Enhanced mobile/touch support
+- Screensaver import/export functionality
 
-## 💬 Support
+## Support
 
-Having issues? Questions? Open an issue on GitHub!
+Having issues? Questions? Open an issue on GitHub.
 
 ---
-
-Made with 🌙 and nostalgia
 
 **Past Midnight** - Because the best ideas come after dark.
